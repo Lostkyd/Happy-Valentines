@@ -24,3 +24,8 @@ body{
   justify-content: center;
   gap: 2rem;
 }
+
+/* positioning context for overlay notes */
+.app-container {
+  position: relative;
+}

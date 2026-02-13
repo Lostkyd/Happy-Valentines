@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import './EmailForm.css';
+import { launchConfetti } from '../../lib/confetti';
 
-export default function EmailForm({ onSent, code, templateId }) {
+export default function EmailForm({ onSent }) {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -16,12 +18,10 @@ export default function EmailForm({ onSent, code, templateId }) {
     formData.append('access_key', '7df23f42-30ec-4557-927e-f4049f767485');
     formData.append('subject', 'Happy Valentine\'s Day!');
     formData.append('from_name', 'Ronn Kevin A. Rubio');
-    formData.append('email', email);
-    const message = `Card: Happy Valentines love\nResponse: ${code || ''}\nEmail: ${email}`;
+    formData.append('to_email', email);
+    const message = `Happy Valentine's Day, my love! 💕\n\nDate Information:\n📅 Date: 02/16/2026 (Monday)\n⏰ Time: 1:00 PM - 5:00 PM\n📍 Venue: Farmer's Cubao - Wok It Out\n\n✨ Wear your best OOTD — I want to see you shine!\n💞 I love you so much.\n\n🌹 Can't wait to see you! 🌹`;
     formData.append('message', message);
-    if (templateId) {
-      formData.append('template_id', templateId);
-    }
+    formData.append('reply_to', email);
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
@@ -30,9 +30,16 @@ export default function EmailForm({ onSent, code, templateId }) {
       });
       const json = await res.json();
       if (json.success) {
-        alert('Thank you — email submitted');
+        try { launchConfetti(); } catch (e) {}
+        setTimeout(() => {
+          if (typeof onSent === 'function') onSent();
+        }, 700);
         setEmail('');
-        if (typeof onSent === 'function') onSent();
+        try {
+          const mailto = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent("Happy Valentine's Day!")}&body=${encodeURIComponent(message)}`;
+          window.open(mailto, '_blank');
+        } catch (e) {
+        }
       } else {
         alert('Submission failed — please check access_key');
       }
