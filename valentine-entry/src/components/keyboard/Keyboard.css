@@ -1,0 +1,93 @@
+.keyboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+  width: 100%;
+}
+
+.keyboard-display {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: 2px solid #ff69b4;
+  border-radius: 8px;
+  background: #fff0f5;
+  color: #333;
+  text-align: center;
+  font-family: 'Outfit', monospace;
+  letter-spacing: 0.1em;
+  min-height: 2.5rem;
+}
+
+.keyboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.keyboard-key {
+  width: 50px;
+  height: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 2px solid #ff69b4;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffd1dc, #ffb6c1);
+  color: #c71585;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Outfit', sans-serif;
+}
+
+.keyboard-key:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+  background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+}
+
+.keyboard-key:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(255, 105, 180, 0.2);
+}
+
+.keyboard-controls {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.control-btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border: 2px solid #ff69b4;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Outfit', sans-serif;
+}
+
+.backspace {
+  background: linear-gradient(135deg, #ffd1dc, #ffb6c1);
+  color: #c71585;
+}
+
+.clear {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  color: white;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+}
+
+.control-btn:active {
+  transform: translateY(0);
+}
